@@ -1,3 +1,6 @@
 agm-map {
-  height: 300px;
+  height: 90vh;
+}
+.title {
+	text-align: center;
 }
