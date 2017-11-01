@@ -7,7 +7,4 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title: string = 'Floriade MaaS';
-  lat: number = 52.375241;
-  lng: number = 5.219354;
-  zoom: number = 17;
 }
