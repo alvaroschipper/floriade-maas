@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AgmCoreModule } from '@agm/core';
+import { API_KEY } from '../../apikey';
 
 import { AppComponent } from './app.component';
 import { MapComponent } from './map/map.component';
@@ -14,8 +15,7 @@ import { GeoLocationService } from './services/geo-location.service';
   imports: [
     BrowserModule,
     AgmCoreModule.forRoot({
-      //Don't forget to remove the key
-      apiKey: ''
+      apiKey: API_KEY
     })
   ],
   providers: [GeoLocationService],
