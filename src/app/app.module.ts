@@ -4,7 +4,7 @@ import { AgmCoreModule } from '@agm/core';
 
 import { AppComponent } from './app.component';
 import { MapComponent } from './map/map.component';
-import { GeoLocationService } from './geo-location.service';
+import { GeoLocationService } from './services/geo-location.service';
 
 @NgModule({
   declarations: [
@@ -14,7 +14,7 @@ import { GeoLocationService } from './geo-location.service';
   imports: [
     BrowserModule,
     AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyC6NgH8-uUZHlqIC5IKFzojYudWfAN_kC8'
+      apiKey: ''
     })
   ],
   providers: [GeoLocationService],
