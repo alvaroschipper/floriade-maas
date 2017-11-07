@@ -16,12 +16,14 @@ export class MapComponent implements OnInit {
   destination: LatLngLiteral;
   zoom: number;
   streetViewControl: boolean;
+  iconUrl: string;
 
   constructor(private geoLocationService: GeoLocationService) {
     this.origin = ALMERE_CENTRUM;
     this.destination = ALMERE_ESPLANADE;
     this.zoom = 17;
     this.streetViewControl = false;
+    this.iconUrl = '../../assets/user_location_marker.png';
   }
 
   ngOnInit() {
