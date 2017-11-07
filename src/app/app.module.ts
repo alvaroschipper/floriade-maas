@@ -14,6 +14,7 @@ import { GeoLocationService } from './services/geo-location.service';
   imports: [
     BrowserModule,
     AgmCoreModule.forRoot({
+      //Don't forget to remove the key
       apiKey: ''
     })
   ],
