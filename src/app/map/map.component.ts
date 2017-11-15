@@ -1,8 +1,8 @@
 import {Component, HostListener, OnInit, ViewChild} from '@angular/core';
 import {AgmMap, LatLngLiteral, MapsAPILoader} from '@agm/core';
 
-import { GeoLocationService } from '../services/geo-location.service';
-import { DirectionsDirective } from '../directives/directions.directive';
+import {GeoLocationService} from '../services/geo-location.service';
+import {DirectionsDirective} from '../directives/directions.directive';
 
 declare const google: any;
 
