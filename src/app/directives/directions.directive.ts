@@ -1,6 +1,7 @@
-import { Directive, Input, OnChanges } from '@angular/core';
+import {Directive, HostListener, Input, OnChanges} from '@angular/core';
 import { GoogleMapsAPIWrapper } from '@agm/core';
-declare var google: any;
+
+declare const google: any;
 
 @Directive({
   selector: 'appDirections'
@@ -9,6 +10,7 @@ export class DirectionsDirective implements OnChanges {
   @Input() origin: any;
   @Input() destination: any;
   directionsDisplay: any;
+  response: any;
 
   constructor(private googleMapsAPIWrapper: GoogleMapsAPIWrapper) {}
 
@@ -45,7 +47,8 @@ export class DirectionsDirective implements OnChanges {
         travelMode: 'WALKING'
       }, (response, status) => {
         if (status === 'OK') {
-          this.directionsDisplay.setDirections(response);
+          this.response = response;
+          this.directionsDisplay.setDirections(this.response);
         } else {
           console.log('Directions request failed due to ' + status);
         }
