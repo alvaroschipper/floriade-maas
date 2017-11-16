@@ -1,12 +1,15 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import {AgmCoreModule, GoogleMapsAPIWrapper} from '@agm/core';
+import {BrowserModule} from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
+import {AgmCoreModule} from '@agm/core';
 
-import { AppComponent } from './app.component';
-import { MapComponent } from './map/map.component';
-import { GeoLocationService } from './services/geo-location.service';
-import { DirectionsDirective } from './directives/directions.directive';
-import { API_KEY } from '../../apikey';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {MatToolbarModule} from '@angular/material/toolbar';
+
+import {AppComponent} from './app.component';
+import {MapComponent} from './map/map.component';
+import {GeoLocationService} from './services/geo-location.service';
+import {DirectionsDirective} from './directives/directions.directive';
+import {API_KEY} from '../../apikey';
 
 @NgModule({
   declarations: [
@@ -18,7 +21,9 @@ import { API_KEY } from '../../apikey';
     BrowserModule,
     AgmCoreModule.forRoot({
       apiKey: API_KEY
-    })
+    }),
+    BrowserAnimationsModule,
+    MatToolbarModule
   ],
   providers: [GeoLocationService],
   bootstrap: [AppComponent]
