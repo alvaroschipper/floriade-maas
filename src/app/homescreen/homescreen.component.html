@@ -1,0 +1,18 @@
+<mat-grid-list cols="4" rowHeight="400px">
+  <mat-grid-tile  [colspan]="2" [rowspan]="2">
+    <mat-card routerLink="/route" class="mat-elevation-z8">
+      <mat-card-title>
+        <i class="material-icons md-48">directions_walk</i>
+        <h1>Route</h1>
+      </mat-card-title>
+    </mat-card>
+  </mat-grid-tile>
+  <mat-grid-tile [colspan]="2" [rowspan]="2">
+    <mat-card routerLink="/explore" class="mat-elevation-z8">
+      <mat-card-title>
+        <i class="material-icons md-48">search</i>
+        <h1>Explore</h1>
+      </mat-card-title>
+    </mat-card>
+  </mat-grid-tile>
+</mat-grid-list>

@@ -1,0 +1,10 @@
+mat-card {
+  width: 80%;
+  height: 80%;
+  margin: 2em auto;
+  text-align: center;
+}
+
+.material-icons.md-48 {
+  font-size: 1100%;
+}
