@@ -1,7 +1,9 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 import {AgmCoreModule} from '@agm/core';
+
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {MatToolbarModule} from '@angular/material/toolbar';
 
 import {AppComponent} from './app.component';
 import {MapComponent} from './map/map.component';
@@ -20,7 +22,8 @@ import {API_KEY} from '../../apikey';
     AgmCoreModule.forRoot({
       apiKey: API_KEY
     }),
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatToolbarModule
   ],
   providers: [GeoLocationService],
   bootstrap: [AppComponent]
