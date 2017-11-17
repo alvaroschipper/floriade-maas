@@ -3,7 +3,7 @@ import {NgModule} from '@angular/core';
 import {AgmCoreModule} from '@agm/core';
 
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatToolbarModule, MatGridListModule, MatCardModule} from '@angular/material';
 
 import {AppComponent} from './app.component';
 import {MapComponent} from './map/map.component';
@@ -11,19 +11,26 @@ import {GeoLocationService} from './services/geo-location.service';
 import {DirectionsDirective} from './directives/directions.directive';
 import {API_KEY} from '../../apikey';
 
+import {HomescreenComponent} from './homescreen/homescreen.component';
+import {AppRoutingModule} from './app-routing.module';
+
 @NgModule({
-  declarations: [
-    AppComponent,
-    MapComponent,
-    DirectionsDirective
-  ],
   imports: [
     BrowserModule,
     AgmCoreModule.forRoot({
       apiKey: API_KEY
     }),
     BrowserAnimationsModule,
-    MatToolbarModule
+    MatToolbarModule,
+    AppRoutingModule,
+    MatGridListModule,
+    MatCardModule
+  ],
+  declarations: [
+    AppComponent,
+    MapComponent,
+    HomescreenComponent,
+    DirectionsDirective
   ],
   providers: [GeoLocationService],
   bootstrap: [AppComponent]
