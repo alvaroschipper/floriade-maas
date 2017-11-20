@@ -1,4 +1,13 @@
-<mat-toolbar class="mat-elevation-z6">
-  <span>{{title}}</span>
-</mat-toolbar>
+<div class="container" fxLayout="row">
+  <div class="item" fxFlex="10%"></div>
+  <div class="item title" fxFlex="80%">
+    <h1>{{title}}</h1>
+  </div>
+  <div class="item back" fxFlex="10%" (click)="goBack()">
+    <i class="material-icons md-30">arrow_back</i>
+  </div>
+</div>
+
 <router-outlet></router-outlet>
+
+

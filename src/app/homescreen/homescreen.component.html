@@ -1,25 +1,16 @@
-<div class="container" fxLayout
-     fxLayout.xs="column"
-     fxLayout.sm="column"
-     fxLayout.md="column"
-
-     fxLayoutAlign="center"
-     fxLayoutGap="10px"
-     fxLayoutGap.xs="0"
-     fxLayoutGap.sm="0"
-     fxLayoutAlign.md="0">
-  <div class="item item-1" fxFlex="50%">
-    <div routerLink="/route" class="mat-elevation-z8 button">
+<div class="container" fxLayout="row" fxLayout.xs="column" fxLayout.sm="column">
+  <div class="item" fxFlex="50%">
+    <div routerLink="/route" class="button">
       <div class="element">
-        <i class="material-icons md-48">local_florist</i>
+        <i class="material-icons">local_florist</i>
         <h1>Route</h1>
       </div>
     </div>
   </div>
-  <div class="item item-2" fxFlex="50%" fxFlexOrder="3">
-    <div  routerLink="/explore" class="mat-elevation-z8 button">
+  <div class="item" fxFlex="50%">
+    <div  routerLink="/explore" class="button">
       <div class="element">
-        <i class="material-icons md-48">explore</i>
+        <i class="material-icons">explore</i>
         <h1>Explore</h1>
       </div>
     </div>

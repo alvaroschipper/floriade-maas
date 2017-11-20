@@ -1,27 +1,38 @@
 .button {
-  width: 80%;
-  height: 80%;
+  width: 75%;
+  height: 75%;
   margin: 2em auto;
   text-align: center;
+  background-color: #FFFFFF;
+  cursor: pointer;
+  font-size: 3vh;
+  -webkit-box-shadow: 0px 0px 27px -5px rgba(0,0,0,0.75);
+  -moz-box-shadow: 0px 0px 27px -5px rgba(0,0,0,0.75);
+  box-shadow: 0px 0px 27px -5px rgba(0,0,0,0.75);
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -ms-transition: all 0.3s ease;
+  transition: all 0.3s ease;
 }
 
-.material-icons.md-48 {
+.button:hover {
+  -webkit-box-shadow: 0px 0px 78px -7px rgba(0,0,0,0.75);
+  -moz-box-shadow: 0px 0px 78px -7px rgba(0,0,0,0.75);
+  box-shadow: 0px 0px 78px -7px rgba(0,0,0,0.75);
+  width: 78%;
+  height: 78%;
+}
+
+.material-icons {
   font-size: 10vh;
 }
 
-h1 {
-  font-size: 8vh;
-}
 .container {
-  height: 93vh;
+  height: 90vh;
 }
 
 .element {
   position: relative;
   top: 50%;
   transform: translateY(-50%);
-}
-
-.button {
-  background-color: #FFFFFF;
 }

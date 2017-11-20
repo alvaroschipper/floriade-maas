@@ -3,7 +3,6 @@ import {NgModule} from '@angular/core';
 import {AgmCoreModule} from '@agm/core';
 
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {MatToolbarModule, MatCardModule} from '@angular/material';
 import {FlexLayoutModule} from '@angular/flex-layout';
 
 import {HomescreenComponent} from './homescreen/homescreen.component';
@@ -22,9 +21,7 @@ import {API_KEY} from '../../apikey';
       apiKey: API_KEY
     }),
     BrowserAnimationsModule,
-    MatToolbarModule,
     AppRoutingModule,
-    MatCardModule,
     FlexLayoutModule
   ],
   declarations: [

@@ -1,5 +1,18 @@
-mat-toolbar {
-  height: 7vh;
-  background-color:	#40AE3D;
+.container {
+  background-color: #40AE3D;
   color: #FFFFFF;
+  /*box-shadow: 0 5px 5px #888888;*/
+  position: relative;
+  z-index: 1;
+}
+
+.title {
+  text-align: center;
+}
+
+.back {
+  text-align: center;
+  margin-top: auto;
+  margin-bottom: auto;
+  cursor: pointer;
 }
