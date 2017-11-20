@@ -3,16 +3,17 @@ import {NgModule} from '@angular/core';
 import {AgmCoreModule} from '@agm/core';
 
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {MatToolbarModule, MatGridListModule, MatCardModule} from '@angular/material';
+import {MatToolbarModule, MatCardModule} from '@angular/material';
+import {FlexLayoutModule} from '@angular/flex-layout';
 
+import {HomescreenComponent} from './homescreen/homescreen.component';
+import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {MapComponent} from './map/map.component';
 import {GeoLocationService} from './services/geo-location.service';
 import {DirectionsDirective} from './directives/directions.directive';
 import {API_KEY} from '../../apikey';
 
-import {HomescreenComponent} from './homescreen/homescreen.component';
-import {AppRoutingModule} from './app-routing.module';
 
 @NgModule({
   imports: [
@@ -23,8 +24,8 @@ import {AppRoutingModule} from './app-routing.module';
     BrowserAnimationsModule,
     MatToolbarModule,
     AppRoutingModule,
-    MatGridListModule,
-    MatCardModule
+    MatCardModule,
+    FlexLayoutModule
   ],
   declarations: [
     AppComponent,
