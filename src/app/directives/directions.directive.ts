@@ -1,5 +1,5 @@
-import {Directive, HostListener, Input, OnChanges} from '@angular/core';
-import { GoogleMapsAPIWrapper } from '@agm/core';
+import {Directive, Input, OnChanges} from '@angular/core';
+import {GoogleMapsAPIWrapper} from '@agm/core';
 
 declare const google: any;
 

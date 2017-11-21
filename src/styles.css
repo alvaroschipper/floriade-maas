@@ -1,2 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
-@import "~@angular/material/prebuilt-themes/pink-bluegrey.css";
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-alpha.1/css/materialize.min.css');
+
+body {
+  font-family: 'Roboto', sans-serif;
+}

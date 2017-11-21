@@ -38,7 +38,10 @@ export class MapComponent implements OnInit {
         this.directionsDirective.directionsDisplay = new google.maps.DirectionsRenderer;
       });
     }
+    this.setLocation();
+  }
 
+  setLocation() {
     this.geoLocationService.getGeoLocation().then(position => {
       this.origin = {lat: position.coords.latitude, lng: position.coords.longitude};
     }).catch(error => {

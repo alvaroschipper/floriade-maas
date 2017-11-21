@@ -1,4 +1,16 @@
-<mat-toolbar role="header">
-  <span>{{title}}</span>
-</mat-toolbar>
-<app-map></app-map>
+<nav class="green darken-1">
+  <div class="nav-wrapper">
+    <span routerLink="/home" class="brand-logo center hide-on-small-only">{{title}}</span>
+    <i routerLink="/home" class="material-icons brand-logo center hide-on-med-and-up">local_florist</i>
+    <ul *ngIf="!location.isCurrentPathEqualTo('/home')" class="left">
+      <li (click)="goBack()"><a><i class="material-icons">arrow_back</i></a></li>
+    </ul>
+    <ul *ngIf="location.isCurrentPathEqualTo('/route')" class="right">
+      <li (click)="goBack()"><a><i class="material-icons">my_location</i></a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="content">
+  <router-outlet></router-outlet>
+</div>

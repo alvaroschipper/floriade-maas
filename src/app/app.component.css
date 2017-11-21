@@ -1,0 +1,11 @@
+.brand-logo {
+  cursor: pointer;
+}
+nav, .nav-wrapper, .material-icons {
+  height: 9vh;
+  line-height: 9vh;
+  font-size: 4vh;
+}
+.content {
+  height: 91vh;
+}
