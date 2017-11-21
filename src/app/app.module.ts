@@ -11,7 +11,6 @@ import {DirectionsDirective} from './directives/directions.directive';
 import {API_KEY} from '../../apikey';
 import {RouteOptionsComponent} from './route-options/route-options.component';
 
-
 @NgModule({
   imports: [
     BrowserModule,

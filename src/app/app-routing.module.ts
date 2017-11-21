@@ -7,9 +7,9 @@ import {RouteOptionsComponent} from './route-options/route-options.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/home', pathMatch: 'full'},
-  {path: 'route', component: MapComponent},
   {path: 'home', component: HomescreenComponent},
-  {path: 'routeoptions', component: RouteOptionsComponent}
+  {path: 'route-options', component: RouteOptionsComponent},
+  {path: 'route/:travelMode', component: MapComponent}
 ];
 
 @NgModule({

@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component} from '@angular/core';
 
 @Component({
   selector: 'app-route-options',
@@ -7,8 +7,5 @@ import {Component, Input} from '@angular/core';
 })
 export class RouteOptionsComponent {
 
-  constructor() { }
-
-  @Input() routeOption: string;
-  @Input() transitMode: string;
+  constructor() {}
 }
