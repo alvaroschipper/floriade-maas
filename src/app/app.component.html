@@ -1,13 +1,16 @@
-<div class="container" fxLayout="row">
-  <div class="item" fxFlex="10%"></div>
-  <div class="item title" fxFlex="80%">
-    <h1>{{title}}</h1>
+<nav class="green darken-1">
+  <div class="nav-wrapper">
+    <span routerLink="/home" class="brand-logo center hide-on-small-only">{{title}}</span>
+    <i routerLink="/home" class="material-icons brand-logo center hide-on-med-and-up">local_florist</i>
+    <ul *ngIf="!location.isCurrentPathEqualTo('/home')" class="left">
+      <li (click)="goBack()"><a><i class="material-icons">arrow_back</i></a></li>
+    </ul>
+    <ul *ngIf="location.isCurrentPathEqualTo('/route')" class="right">
+      <li (click)="goBack()"><a><i class="material-icons">my_location</i></a></li>
+    </ul>
   </div>
-  <div class="item back" fxFlex="10%" (click)="goBack()">
-    <i class="material-icons md-30">arrow_back</i>
-  </div>
+</nav>
+
+<div class="content">
+  <router-outlet></router-outlet>
 </div>
-
-<router-outlet></router-outlet>
-
-

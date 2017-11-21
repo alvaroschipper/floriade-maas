@@ -2,9 +2,6 @@ import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 import {AgmCoreModule} from '@agm/core';
 
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {FlexLayoutModule} from '@angular/flex-layout';
-
 import {HomescreenComponent} from './homescreen/homescreen.component';
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
@@ -20,10 +17,7 @@ import {API_KEY} from '../../apikey';
     AgmCoreModule.forRoot({
       apiKey: API_KEY
     }),
-    BrowserAnimationsModule,
-    AppRoutingModule,
-    FlexLayoutModule
-  ],
+    AppRoutingModule],
   declarations: [
     AppComponent,
     MapComponent,

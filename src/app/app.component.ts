@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { Location } from '@angular/common';
+import {Component} from '@angular/core';
+import {Location} from '@angular/common';
 
 @Component({
   selector: 'app-root',
@@ -7,10 +7,10 @@ import { Location } from '@angular/common';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title: string = 'Floriade MaaS';
+  title = 'Floriade MaaS';
 
-  constructor(private location: Location){
-  }
+  constructor(public location: Location) {}
+
   goBack(): void {
     this.location.back();
   }
