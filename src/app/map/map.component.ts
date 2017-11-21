@@ -3,6 +3,8 @@ import {AgmMap, LatLngLiteral, MapsAPILoader} from '@agm/core';
 
 import {GeoLocationService} from '../services/geo-location.service';
 import {DirectionsDirective} from '../directives/directions.directive';
+import {RouteOptionsComponent} from '../route-options/route-options.component';
+
 
 declare const google: any;
 
@@ -17,6 +19,7 @@ const ALMERE_ESPLANADE = {lat: 52.367932, lng: 5.219485};
 export class MapComponent implements OnInit {
   @ViewChild(DirectionsDirective) directionsDirective: DirectionsDirective;
   @ViewChild(AgmMap) agmMap: AgmMap;
+  @ViewChild(RouteOptionsComponent) routeOptionsComponent: RouteOptionsComponent;
 
   origin: LatLngLiteral;
   destination: LatLngLiteral;
@@ -39,6 +42,8 @@ export class MapComponent implements OnInit {
       });
     }
     this.setLocation();
+    console.log(this.routeOptionsComponent.routeOption);
+    console.log(this.routeOptionsComponent.transitMode);
   }
 
   setLocation() {

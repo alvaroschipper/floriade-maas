@@ -1,0 +1,47 @@
+<div class="container">
+  <div class="row">
+    <div class="col s12 m6">
+      <div routerLink="/route" class="card-panel waves-effect waves-green center z-depth-3" [routeOption]="WALKING">
+        <div class="center">
+          <i class="large material-icons">directions_walk</i>
+          <h1 class="text">Walking</h1>
+          <div class="divider"></div>
+          <h5>... min.</h5>
+        </div>
+      </div>
+    </div>
+
+    <div class="col s12 m6">
+      <div routerLink="/route" class="card-panel waves-effect waves-green center z-depth-3" [routeOption]="BICYCLING">
+        <div class="center">
+          <i class="large material-icons">directions_bike</i>
+          <h1 class="text">Bicyling</h1>
+          <div class="divider"></div>
+          <h5>... min.</h5>
+        </div>
+      </div>
+    </div>
+
+    <div class="col s12 m6">
+      <div routerLink="/route" class="card-panel waves-effect waves-green center z-depth-3" [routeOption]="TRANSIT" [transitMode]="BUS">
+        <div class="center">
+          <i class="large material-icons">directions_bus</i>
+          <h1 class="text">Bus</h1>
+          <div class="divider"></div>
+          <h5>... min.</h5>
+        </div>
+      </div>
+    </div>
+
+    <div class="col s12 m6">
+      <div routerLink="/route" class="card-panel waves-effect waves-green center z-depth-3" [routeOption]="TRANSIT" [transitMode]="BUS">
+        <div class="center">
+          <i class="large material-icons">directions_boat</i>
+          <h1 class="text">Amfibus</h1>
+          <div class="divider"></div>
+          <h5>... min.</h5>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
