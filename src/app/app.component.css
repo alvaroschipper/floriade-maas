@@ -9,3 +9,9 @@ nav, .nav-wrapper, .material-icons {
 .content {
   height: 91vh;
 }
+.material-icons {
+  display: inline;
+}
+a {
+  line-height: 100%;
+}

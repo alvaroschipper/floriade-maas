@@ -9,7 +9,7 @@ import {MapComponent} from './map/map.component';
 import {GeoLocationService} from './services/geo-location.service';
 import {DirectionsDirective} from './directives/directions.directive';
 import {API_KEY} from '../../apikey';
-
+import {RouteOptionsComponent} from './route-options/route-options.component';
 
 @NgModule({
   imports: [
@@ -22,7 +22,8 @@ import {API_KEY} from '../../apikey';
     AppComponent,
     MapComponent,
     HomescreenComponent,
-    DirectionsDirective
+    DirectionsDirective,
+    RouteOptionsComponent
   ],
   providers: [GeoLocationService],
   bootstrap: [AppComponent]

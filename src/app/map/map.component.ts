@@ -3,11 +3,13 @@ import {AgmMap, LatLngLiteral, MapsAPILoader} from '@agm/core';
 
 import {GeoLocationService} from '../services/geo-location.service';
 import {DirectionsDirective} from '../directives/directions.directive';
+import {ActivatedRoute} from '@angular/router';
 
 declare const google: any;
 
 const ALMERE_CENTRUM = {lat: 52.375241, lng: 5.219354};
 const ALMERE_ESPLANADE = {lat: 52.367932, lng: 5.219485};
+const ALMERE_FLORIADE = {lat: 52.356331, lng: 5.228428};
 
 @Component({
   selector: 'app-map',
@@ -15,8 +17,9 @@ const ALMERE_ESPLANADE = {lat: 52.367932, lng: 5.219485};
   styleUrls: ['./map.component.css']
 })
 export class MapComponent implements OnInit {
-  @ViewChild(DirectionsDirective) directionsDirective: DirectionsDirective;
+
   @ViewChild(AgmMap) agmMap: AgmMap;
+  @ViewChild(DirectionsDirective) directionsDirective: DirectionsDirective;
 
   origin: LatLngLiteral;
   destination: LatLngLiteral;
@@ -24,9 +27,9 @@ export class MapComponent implements OnInit {
   streetViewControl: boolean;
   iconUrl: string;
 
-  constructor(private geoLocationService: GeoLocationService, private mapsAPILoader: MapsAPILoader) {
+  constructor(private geoLocationService: GeoLocationService, private mapsAPILoader: MapsAPILoader, private activatedRoute: ActivatedRoute) {
     this.origin = ALMERE_CENTRUM;
-    this.destination = ALMERE_ESPLANADE;
+    this.destination = ALMERE_FLORIADE;
     this.zoom = 17;
     this.streetViewControl = false;
     this.iconUrl = '../../assets/user_location_marker.png';
@@ -39,6 +42,9 @@ export class MapComponent implements OnInit {
       });
     }
     this.setLocation();
+    this.activatedRoute.paramMap.subscribe(params => {
+      this.directionsDirective.travelMode = params.get('travelMode');
+    });
   }
 
   setLocation() {

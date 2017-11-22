@@ -7,8 +7,10 @@ declare const google: any;
   selector: 'appDirections'
 })
 export class DirectionsDirective implements OnChanges {
+
   @Input() origin: any;
   @Input() destination: any;
+  travelMode: string;
   directionsDisplay: any;
   response: any;
 
@@ -23,28 +25,12 @@ export class DirectionsDirective implements OnChanges {
       const directionsService = new google.maps.DirectionsService;
       this.directionsDisplay.setMap(map);
       this.directionsDisplay.setOptions({
-        suppressMarkers: true,
-        polylineOptions: {
-          strokeOpacity: 0,
-          icons: [{
-            icon: {
-              path: google.maps.SymbolPath.CIRCLE,
-              fillColor: '#01b3fd',
-              fillOpacity: 1,
-              scale: 3.5,
-              strokeColor: '#3378c3',
-              strokeOpacity: 1,
-              strokeWeight: 1.8
-            },
-            offset: '0',
-            repeat: '10px'
-          }]
-        }
+        suppressMarkers: true
       });
       directionsService.route({
         origin: this.origin,
         destination: this.destination,
-        travelMode: 'WALKING'
+        travelMode: this.travelMode
       }, (response, status) => {
         if (status === 'OK') {
           this.response = response;
