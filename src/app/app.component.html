@@ -1,12 +1,11 @@
 <nav class="green darken-1">
   <div class="nav-wrapper">
-    <span routerLink="/home" class="brand-logo center hide-on-small-only">{{title}}</span>
-    <i routerLink="/home" class="material-icons brand-logo center hide-on-med-and-up">local_florist</i>
+    <span routerLink="/home" class="brand-logo center">
+      <i class="material-icons">local_florist</i>
+      {{title}}
+    </span>
     <ul *ngIf="!location.isCurrentPathEqualTo('/home')" class="left">
       <li (click)="goBack()"><a><i class="material-icons">arrow_back</i></a></li>
-    </ul>
-    <ul *ngIf="location.path().includes('/route/')" class="right">
-      <li (click)="goBack()"><a><i class="material-icons">my_location</i></a></li>
     </ul>
   </div>
 </nav>
