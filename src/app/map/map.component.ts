@@ -4,12 +4,9 @@ import {AgmMap, LatLngLiteral, MapsAPILoader} from '@agm/core';
 import {GeoLocationService} from '../services/geo-location.service';
 import {DirectionsDirective} from '../directives/directions.directive';
 import {ActivatedRoute} from '@angular/router';
+import {ALMERE_CENTRUM, ALMERE_FLORIADE} from '../domain/locations';
 
 declare const google: any;
-
-const ALMERE_CENTRUM = {lat: 52.375241, lng: 5.219354};
-const ALMERE_ESPLANADE = {lat: 52.367932, lng: 5.219485};
-const ALMERE_FLORIADE = {lat: 52.356331, lng: 5.228428};
 
 @Component({
   selector: 'app-map',

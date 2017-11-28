@@ -2,12 +2,26 @@
   <div class="row">
     <h1>{{test}}</h1>
     <div *ngFor="let routeOption of routeOptions" class="col s12 m6">
-      <div routerLink="/route/{{routeOption?.travelMode}}" class="card-panel waves-effect waves-green center z-depth-3">
+      <div routerLink="/route/{{routeOption.travelMode}}" class="card-panel waves-effect waves-green center z-depth-3">
         <div class="center">
-          <i class="large material-icons">{{routeOption?.icon}}</i>
-          <h1 class="text">{{routeOption?.name}}</h1>
+          <i class="large material-icons">{{routeOption.icon}}</i>
+          <h1 class="text">{{routeOption.name}}</h1>
           <div class="divider"></div>
+          <div *ngIf="routeOptions[3].travelTime == null && routeOptions[3].travelDistance == null">
+            <div class="preloader-wrapper small active">
+              <div class="spinner-layer spinner-green-only">
+                <div class="circle-clipper left">
+                  <div class="circle"></div>
+                </div><div class="gap-patch">
+                <div class="circle"></div>
+              </div><div class="circle-clipper right">
+                <div class="circle"></div>
+              </div>
+              </div>
+            </div>
+          </div>
           <h5>{{routeOption.travelTime}}</h5>
+          <h6>{{routeOption.travelDistance}}</h6>
         </div>
       </div>
     </div>
