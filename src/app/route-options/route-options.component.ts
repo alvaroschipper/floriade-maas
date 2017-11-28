@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {MapsAPILoader} from '@agm/core';
+import {MapsAPILoader, LatLngLiteral} from '@agm/core';
 import {GeoLocationService} from '../services/geo-location.service';
+import {DistanceMatrixApiService} from "../services/distance-matrix-api.service";
 
 declare const google: any;
 
@@ -11,6 +12,8 @@ declare const google: any;
 })
 export class RouteOptionsComponent implements OnInit {
 
+  test: JSON;
+
   routeOptions: [{
     travelMode: String,
     name: String,
@@ -18,7 +21,7 @@ export class RouteOptionsComponent implements OnInit {
     travelTime: String
   }];
 
-  constructor(private geoLocationService: GeoLocationService, private mapsAPILoader: MapsAPILoader) {
+  constructor(private distanceMatrixApiService: DistanceMatrixApiService,private geoLocationService: GeoLocationService, private mapsAPILoader: MapsAPILoader) {
     this.routeOptions = [{
       travelMode: 'WALKING',
       name: 'Walking',
@@ -47,21 +50,10 @@ export class RouteOptionsComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.mapsAPILoader.load().then(() => {
-      this.geoLocationService.getGeoLocation().then(position => {
-        const distanceMatrixService = new google.maps.DistanceMatrixService;
-        for (const routeOption of this.routeOptions) {
-          distanceMatrixService.getDistanceMatrix({
-            origins: [{lat: position.coords.latitude, lng: position.coords.longitude}],
-            destinations: [{lat: 52.356331, lng: 5.228428}],
-            travelMode: [routeOption.travelMode]
-          }, response => {
-            routeOption.travelTime = response.rows[0].elements[0].duration.text;
-            console.log(routeOption);
-          });
-        }
+    this.distanceMatrixApiService.getDistanceMatrixObservable({lat: 52.375241, lng: 5.219354}, {lat: 52.356331, lng: 5.228428}, 'TRANSIT')
+      .subscribe(json => {
+        console.log(json['rows'][0]['elements'][0]['duration']['text']);
+        this.routeOptions[0].travelTime = json['rows'][0]['elements'][0]['duration']['text'];
       });
-
-    });
   }
 }
