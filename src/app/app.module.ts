@@ -10,10 +10,13 @@ import {GeoLocationService} from './services/geo-location.service';
 import {DirectionsDirective} from './directives/directions.directive';
 import {API_KEY} from '../../apikey';
 import {RouteOptionsComponent} from './route-options/route-options.component';
+import {HttpClientModule} from '@angular/common/http';
+import {DistanceMatrixApiService} from './services/distance-matrix-api.service';
 
 @NgModule({
   imports: [
     BrowserModule,
+    HttpClientModule,
     AgmCoreModule.forRoot({
       apiKey: API_KEY
     }),
@@ -25,7 +28,7 @@ import {RouteOptionsComponent} from './route-options/route-options.component';
     DirectionsDirective,
     RouteOptionsComponent
   ],
-  providers: [GeoLocationService],
+  providers: [GeoLocationService, DistanceMatrixApiService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
