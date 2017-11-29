@@ -1,0 +1,14 @@
+<div class="container">
+  <ul class="collapsible popout" data-collapsible="accordion">
+    <li *ngFor="let place of places">
+      <div class="collapsible-header">
+        <div>
+          <ul>
+            <li><h6>{{place.name}}</h6></li>
+            <li> Rating: {{place.rating}}</li>
+          </ul>
+        </div>
+      </div>
+    </li>
+  </ul>
+</div>

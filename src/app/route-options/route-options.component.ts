@@ -56,6 +56,7 @@ export class RouteOptionsComponent implements OnInit {
       const destination = ALMERE_FLORIADE;
       for (const routeOption of this.routeOptions) {
         this.distanceMatrixApiService.getTimeAndDistance(origin, destination, routeOption.travelMode).subscribe(json => {
+          console.log(json);
           routeOption.travelTime = json['rows'][0]['elements'][0]['duration']['text'];
           routeOption.travelDistance = json['rows'][0]['elements'][0]['distance']['text'];
         });
