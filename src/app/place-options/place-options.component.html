@@ -1,0 +1,17 @@
+<div class="container">
+  <div class="row">
+    <div *ngFor="let options of placeOptions" class="col s12 m4 l4">
+      <div class="card">
+        <div class="card-content activator center">
+          <i class="material-icons large">{{options.categoryIcon}}</i>
+          <h1 class="activator text">{{options.category}}</h1>
+        </div>
+        <div class="card-reveal activator">
+          <div *ngFor="let types of options.types" class="col s12">
+            <a class="center waves-effect waves-light btn green darken-1" routerLink="/places/{{types.type}}">{{types.name}}</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

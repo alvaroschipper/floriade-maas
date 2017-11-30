@@ -18,6 +18,7 @@ import {PlacesComponent} from './places/places.component';
 import {GeoLocationService} from './services/geo-location.service';
 import {DistanceMatrixApiService} from './services/distance-matrix-api.service';
 import {PlacesApiService} from './services/places-api.service';
+import { PlaceOptionsComponent } from './place-options/place-options.component';
 
 @NgModule({
   imports: [
@@ -33,7 +34,8 @@ import {PlacesApiService} from './services/places-api.service';
     HomescreenComponent,
     DirectionsDirective,
     RouteOptionsComponent,
-    PlacesComponent
+    PlacesComponent,
+    PlaceOptionsComponent
   ],
   providers: [GeoLocationService, DistanceMatrixApiService, PlacesApiService],
   bootstrap: [AppComponent]

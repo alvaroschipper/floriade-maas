@@ -1,0 +1,16 @@
+.text {
+  font-size: 2em;
+}
+.large {
+  font-size: 8em;
+}
+
+.btn {
+  width: 100%;
+  margin-bottom: 1px;
+  padding: 0 0.5rem;
+}
+
+.card {
+  max-height: 30vh;
+}

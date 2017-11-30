@@ -9,11 +9,12 @@ export class PlacesApiService {
 
   constructor(private httpClient: HttpClient) {}
 
-  getNearbyPlaces(origin: LatLngLiteral): Observable<JSON> {
+  getNearbyPlaces(origin: LatLngLiteral, type: string): Observable<JSON> {
 
     const url = 'https://maps.googleapis.com/maps/api/place/nearbysearch/json'
       + '?location=' + origin.lat + ',' + origin.lng
-      + '&radius=200'
+      + '&rankby=distance'
+      + '&type=' + type
       + '&key=' + API_KEY;
 
     return this.httpClient.get<JSON>(url);
