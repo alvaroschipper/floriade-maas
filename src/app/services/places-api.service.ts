@@ -15,6 +15,15 @@ export class PlacesApiService {
       + '?location=' + origin.lat + ',' + origin.lng
       + '&rankby=distance'
       + '&type=' + type
+      + '&opennow=true'
+      + '&key=' + API_KEY;
+
+    return this.httpClient.get<JSON>(url);
+  }
+
+  getPlaceDetails(placeID: String): Observable<JSON> {
+    const url = 'https://maps.googleapis.com/maps/api/place/details/json'
+      + '?placeid=' + placeID
       + '&key=' + API_KEY;
 
     return this.httpClient.get<JSON>(url);
