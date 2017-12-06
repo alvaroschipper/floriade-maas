@@ -5,12 +5,42 @@
   font-size: 8em;
 }
 
-.btn {
-  width: 100%;
-  margin-bottom: 1px;
-  padding: 0 0.5rem;
+.card {
+  cursor: pointer;
 }
 
-.card {
-  max-height: 30vh;
+.cards {
+  display: flex;
+  min-width: 100%;
+  min-height: 30vh;
+  overflow-x: auto;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+::-webkit-scrollbar {
+  width: 0px;
+  background: transparent;
+}
+
+@media only screen and (max-width : 480px) {
+  .card--content {
+    overflow: hidden;
+    min-width: 300px;
+    margin: 0 5px 0 5px;
+    color: #FFFFFF;
+  }
+}
+@media only screen and (min-width : 480px) {
+  .card--content {
+    overflow: hidden;
+    min-width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+    color: #FFFFFF;
+  }
+}
+
+.types-name {
+  margin: 4em auto 0;
 }

@@ -1,11 +1,13 @@
-import {Component, OnInit} from '@angular/core';
+import {AfterViewInit, Component, OnInit} from '@angular/core';
+
+declare let $: any;
 
 @Component({
   selector: 'app-place-options',
   templateUrl: './place-options.component.html',
   styleUrls: ['./place-options.component.css']
 })
-export class PlaceOptionsComponent implements OnInit {
+export class PlaceOptionsComponent implements OnInit, AfterViewInit {
 
   placeOptions: [{
     category: String,
@@ -15,74 +17,75 @@ export class PlaceOptionsComponent implements OnInit {
 
   constructor() {
     this.placeOptions = [
-      {category: 'Food',
+      {
+        category: 'Food',
         categoryIcon: 'restaurant',
         types: [
-          { name: 'Bakery', type: 'bakery', typeIcon: 'null'},
-          { name: 'Cafe', type: 'cafe', typeIcon: 'null'},
-          { name: 'Meal Takeaway', type: 'meal_takeaway', typeIcon: 'null'},
-          { name: 'Restaurant', type: 'restaurant', typeIcon: 'null'},
-          { name: 'Liquor Store', type: 'liquor_store', typeIcon: 'null'}
-        ]},
-      {
-        category: 'Health',
-        categoryIcon: 'local_hospital',
-        types: [
-          { name: 'Hospital', type: 'hospital', typeIcon: 'null'},
-          { name: 'Doctor', type: 'doctor', typeIcon: 'null'},
-          { name: 'Pharmacy', type: 'pharmacy', typeIcon: 'null'}
-        ]},
+          {name: 'Bakery', type: 'bakery', color: 'red darken-2'},
+          {name: 'Cafe', type: 'cafe', color: 'indigo darken-2'},
+          {name: 'Meal Takeaway', type: 'meal_takeaway', color: 'deep-orange darken-2'},
+          {name: 'Restaurant', type: 'restaurant', color: 'light-green darken-2ull'},
+          {name: 'Liquor Store', type: 'liquor_store', color: 'teal darken-2'}
+        ]
+      },
+
       {
         category: 'Entertainment',
         categoryIcon: 'theaters',
         types: [
-          { name: 'Amusement Park', type: 'amusement_park', typeIcon: 'null'},
-          { name: 'Library', type: 'library', typeIcon: 'null'},
-          { name: 'Casino', type: 'casino', typeIcon: 'null'},
-          { name: 'Cinema', type: 'movie_theater', typeIcon: 'null'},
-          { name: 'Park', type: 'park', typeIcon: 'null'},
-        ]},
-      {
-        category: 'Cash',
-        categoryIcon: 'local_atm',
-        types: [
-          { name: 'ATM', type: 'atm', typeIcon: 'null'},
-          { name: 'Bank', type: 'bank', typeIcon: 'null'}
-        ]},
+          {name: 'Amusement Park', type: 'amusement_park', color: 'red darken-2'},
+          {name: 'Library', type: 'library', color: 'indigo darken-2'},
+          {name: 'Casino', type: 'casino', color: 'deep-orange darken-2'},
+          {name: 'Cinema', type: 'movie_theater', color: 'light-green darken-2ull'},
+          {name: 'Park', type: 'park', color: 'teal darken-2'},
+        ]
+      },
       {
         category: 'Shopping',
         categoryIcon: 'shopping_cart',
         types: [
-          { name: 'Book Store', type: 'book_store', typeIcon: 'null'},
-          { name: 'Clothing Store', type: 'clothing_store', typeIcon: 'null'},
-          { name: 'Convenience Store', type: 'convenience_store', typeIcon: 'null'},
-          { name: 'Department Store', type: 'department_store', typeIcon: 'null'},
-          { name: 'Electronics Store', type: 'electronics_store', typeIcon: 'null'},
-          { name: 'Shoe Store', type: 'shoe_store', typeIcon: 'null'},
-        ]},
+          {name: 'Book Store', type: 'book_store', color: 'red darken-2'},
+          {name: 'Clothing Store', type: 'clothing_store', color: 'indigo darken-2'},
+          {name: 'Convenience Store', type: 'convenienc  e_store', color: 'deep-orange darken-2'},
+          {name: 'Department Store', type: 'department_store', color: 'light-green darken-2ull'},
+          {name: 'Electronics Store', type: 'electronics_store', color: 'teal darken-2'},
+          {name: 'Shoe Store', type: 'shoe_store', color:  'lime darken-2'},
+        ]
+      },
       {
         category: 'Beauty',
         categoryIcon: 'spa',
         types: [
-          { name: 'Beauty Salon', type: 'beauty_salon', typeIcon: 'null'},
-          { name: 'Hair Care', type: 'hair_care', typeIcon: 'null'},
-          { name: 'Spa', type: 'spa', typeIcon: 'null'},
-        ]},
+          {name: 'Beauty Salon', type: 'beauty_salon', color: 'red darken-2'},
+          {name: 'Hair Care', type: 'hair_care', color: 'indigo darken-2'},
+          {name: 'Spa', type: 'spa', color: 'deep-orange darken-2'},
+        ]
+      },
       {
-        category: 'Transit',
-        categoryIcon: 'directions_bus',
+        category: 'Health',
+        categoryIcon: 'local_hospital',
         types: [
-          { name: 'Bus Station', type: 'bus_station', typeIcon: 'null'},
-          { name: 'Taxi Stand', type: 'taxi_stand', typeIcon: 'null'},
-          { name: 'Train Station', type: 'train_station', typeIcon: 'null'},
-        ]}
+          {name: 'Hospital', type: 'hospital', color: 'red darken-2'},
+          {name: 'Doctor', type: 'doctor', color: 'indigo darken-2'},
+          {name: 'Pharmacy', type: 'pharmacy', color: 'deep-orange darken-2'}
+        ]
+      },
+      {
+        category: 'Cash',
+        categoryIcon: 'local_atm',
+        types: [
+          {name: 'ATM', type: 'atm', color: 'red darken-2'},
+          {name: 'Bank', type: 'bank', color: 'indigo darken-2'}
+        ]
+      },
     ];
   }
+
 
   ngOnInit() {
     console.log(this.placeOptions);
   }
-  /*
-   Transit
-  */
+  ngAfterViewInit() {
+    $('.modal').modal();
+  }
 }
