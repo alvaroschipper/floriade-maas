@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="row">
+    <div *ngFor="let options of placeOptions">
+      <div class="col s12 m4 l4">
+        <div class="card modal-trigger" [attr.data-target]="options.category">
+          <div class="card-content activator center">
+            <i class="material-icons large">{{options.categoryIcon}}</i>
+            <h1 class="activator text">{{options.category}}</h1>
+          </div>
+        </div>
+      </div>
+      <div [attr.id]="options.category" class="modal bottom-sheet">
+        <div class="modal-content center">
+          <h4>{{options.category}}</h4>
+          <section>
+            <div class="card card--content modal-close flow-text center-align {{types.color}} z-depth-3"
+                 *ngFor="let types of options.types"
+                 routerLink="/places/{{types.type}}">
+              <div class="types-name">{{types.name}}</div>
+            </div>
+          </section>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

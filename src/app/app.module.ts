@@ -1,17 +1,24 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 import {AgmCoreModule} from '@agm/core';
+import {HttpClientModule} from '@angular/common/http';
+
+import {AppRoutingModule} from './app-routing.module';
+
+import {API_KEY} from '../../apikey';
+
+import {DirectionsDirective} from './directives/directions.directive';
 
 import {HomescreenComponent} from './homescreen/homescreen.component';
-import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {MapComponent} from './map/map.component';
-import {GeoLocationService} from './services/geo-location.service';
-import {DirectionsDirective} from './directives/directions.directive';
-import {API_KEY} from '../../apikey';
 import {RouteOptionsComponent} from './route-options/route-options.component';
-import {HttpClientModule} from '@angular/common/http';
+import {PlacesComponent} from './places/places.component';
+
+import {GeoLocationService} from './services/geo-location.service';
 import {DistanceMatrixApiService} from './services/distance-matrix-api.service';
+import {PlacesApiService} from './services/places-api.service';
+import { PlaceOptionsComponent } from './place-options/place-options.component';
 
 @NgModule({
   imports: [
@@ -26,9 +33,11 @@ import {DistanceMatrixApiService} from './services/distance-matrix-api.service';
     MapComponent,
     HomescreenComponent,
     DirectionsDirective,
-    RouteOptionsComponent
+    RouteOptionsComponent,
+    PlacesComponent,
+    PlaceOptionsComponent
   ],
-  providers: [GeoLocationService, DistanceMatrixApiService],
+  providers: [GeoLocationService, DistanceMatrixApiService, PlacesApiService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

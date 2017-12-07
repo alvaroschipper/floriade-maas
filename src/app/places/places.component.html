@@ -1,0 +1,35 @@
+<div class="container">
+  <div class="row">
+    <div *ngFor="let place of places">
+      <div *ngIf="place.photos" class="col s12 m6">
+        <div class="hoverable card small">
+          <div class="card-image waves-effect waves-block waves-light">
+            <img class="activator" src="https://maps.googleapis.com/maps/api/place/photo?photoreference={{place.photos[0].photo_reference}}&maxwidth={{imageMaxWidth}}&key={{API_KEY}}">
+          </div>
+          <div class="card-content">
+            <i class="material-icons right">more_vert</i>
+            <span class="card-title grey-text text-darken-4 truncate">{{place.name}}</span>
+
+            <span *ngIf="place.rating" class="rating orange-text darken-4"><!--<i class="rating material-icons">stars</i>--> {{place.rating}}</span>
+            <!--<span *ngIf="place.price_level" class="rating green-text darken-4"><i class="rating material-icons">attach_money</i> {{place.price_level}}</span>-->
+
+            <div class="orange-text darken-4">
+              <span *ngFor="let index of [1,2,3,4,5]">
+                <i *ngIf="index < place.rating" class="rating material-icons">star</i>
+              </span>
+                <i *ngIf="place.rating % index !== 0" class="rating material-icons">star_half</i>
+              <span *ngFor="let index of [1,2,3,4,5]" class="orange-text darken-4">
+                <i *ngIf="index >= place.rating" class="rating material-icons">star_border</i>
+              </span>
+            </div>
+
+          </div>
+          <div class="card-reveal">
+            <span class="card-title grey-text text-darken-4 truncate">{{place.name}}<i class="material-icons right">close</i></span>
+            <p>Here is some more information about this product that is only revealed once clicked on.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

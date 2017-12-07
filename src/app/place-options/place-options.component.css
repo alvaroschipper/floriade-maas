@@ -1,0 +1,51 @@
+.container {
+  padding-top: 25px;
+}
+.text {
+  font-size: 3em;
+}
+.large {
+  font-size: 8em;
+}
+
+.card {
+  cursor: pointer;
+}
+
+section {
+  display: flex;
+  min-width: 100%;
+  min-height: 30vh;
+  overflow-x: auto;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+::-webkit-scrollbar {
+  width: 0px;
+  background: transparent;
+}
+
+@media only screen and (max-width : 480px) {
+  .card--content {
+    overflow: hidden;
+    min-width: 300px;
+    margin: 0 5px 0 5px;
+    color: #FFFFFF;
+    font-size: 1.5em;
+  }
+}
+@media only screen and (min-width : 480px) {
+  .card--content {
+    overflow: hidden;
+    min-width: 275px;
+    margin-left: auto;
+    margin-right: auto;
+    color: #FFFFFF;
+    font-size: 2em;
+  }
+}
+
+.types-name {
+  margin: 3em auto 0;
+}
