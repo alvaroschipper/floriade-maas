@@ -1,20 +1,21 @@
-<nav class="green darken-1">
-  <div class="nav-wrapper">
-    <span routerLink="/home" class="brand-logo center"><i class="material-icons">local_florist</i>{{title}}</span>
+<div class="navbar-fixed">
+  <nav class="green darken-1">
+    <div class="nav-wrapper">
+      <span routerLink="/home" class="brand-logo center"><i class="material-icons">local_florist</i>{{title}}</span>
 
-    <ul *ngIf="!location.isCurrentPathEqualTo('/home')" class="left">
-      <li (click)="goBack()">
-        <a>
-          <i class="material-icons">arrow_back</i>
-          <i *ngIf="location.path().includes('WALKING')" class="material-icons">directions_walk</i>
-          <i *ngIf="location.path().includes('TRANSIT')" class="material-icons">directions_transit</i>
-          <i *ngIf="location.path().includes('BICYCLING')" class="material-icons">directions_bike</i>
-        </a>
-      </li>
-    </ul>
-  </div>
-</nav>
-
+      <ul *ngIf="!location.isCurrentPathEqualTo('/home')" class="left">
+        <li (click)="goBack()">
+          <a>
+            <i class="material-icons">arrow_back</i>
+            <i *ngIf="location.path().includes('WALKING')" class="material-icons">directions_walk</i>
+            <i *ngIf="location.path().includes('TRANSIT')" class="material-icons">directions_transit</i>
+            <i *ngIf="location.path().includes('BICYCLING')" class="material-icons">directions_bike</i>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</div>
 <div class="content">
   <router-outlet></router-outlet>
 </div>

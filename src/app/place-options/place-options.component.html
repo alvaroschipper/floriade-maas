@@ -12,7 +12,7 @@
       <div [attr.id]="options.category" class="modal bottom-sheet">
         <div class="modal-content center">
           <h4>{{options.category}}</h4>
-          <section class="cards">
+          <section>
             <div class="card card--content modal-close flow-text center-align {{types.color}} z-depth-3"
                  *ngFor="let types of options.types"
                  routerLink="/places/{{types.type}}">

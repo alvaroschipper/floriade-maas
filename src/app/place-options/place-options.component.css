@@ -1,5 +1,8 @@
+.container {
+  padding-top: 25px;
+}
 .text {
-  font-size: 2em;
+  font-size: 3em;
 }
 .large {
   font-size: 8em;
@@ -9,7 +12,7 @@
   cursor: pointer;
 }
 
-.cards {
+section {
   display: flex;
   min-width: 100%;
   min-height: 30vh;
@@ -29,18 +32,20 @@
     min-width: 300px;
     margin: 0 5px 0 5px;
     color: #FFFFFF;
+    font-size: 1.5em;
   }
 }
 @media only screen and (min-width : 480px) {
   .card--content {
     overflow: hidden;
-    min-width: 300px;
+    min-width: 275px;
     margin-left: auto;
     margin-right: auto;
     color: #FFFFFF;
+    font-size: 2em;
   }
 }
 
 .types-name {
-  margin: 4em auto 0;
+  margin: 3em auto 0;
 }
