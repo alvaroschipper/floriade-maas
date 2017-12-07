@@ -4,6 +4,7 @@ import {PlacesApiService} from '../services/places-api.service';
 import {ActivatedRoute} from '@angular/router';
 import {ALMERE_ESPLANADE} from '../domain/locations';
 import {API_KEY} from '../../../apikey';
+import PlaceResult = google.maps.places.PlaceResult;
 
 @Component({
   selector: 'app-places',
@@ -29,14 +30,21 @@ export class PlacesComponent implements OnInit {
     });
     this.geoLocationService.getGeoLocation().then(position => {
       const origin = {lat: position.coords.latitude, lng: position.coords.longitude};
-      this.placesApiService.getNearbyPlaces(origin, this.placeType).subscribe(json => {
-        this.places = json['results'];
+      this.placesApiService.getNearbyPlaces(origin, this.placeType).subscribe(places => {
+        this.places = places;
       });
     }, error => {
       console.error(error.message);
-      this.placesApiService.getNearbyPlaces(ALMERE_ESPLANADE, this.placeType).subscribe(json => {
-        this.places = json['results'];
+      this.placesApiService.getNearbyPlaces(ALMERE_ESPLANADE, this.placeType).subscribe(places => {
+        this.places = places;
       });
+    });
+  }
+
+  getPlaceDetails(place: PlaceResult) {
+    this.placesApiService.getPlaceDetails(place.place_id).subscribe(placeResult => {
+      console.log(this.places.results);
+      console.log(this.places.findIndex(item => item.place_id === 'test'));
     });
   }
 }
