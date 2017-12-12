@@ -2,9 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {GeoLocationService} from '../services/geo-location.service';
 import {PlacesApiService} from '../services/places-api.service';
 import {ActivatedRoute} from '@angular/router';
-import {ALMERE_ESPLANADE} from '../domain/locations';
+import {ALMERE_CENTRUM} from '../domain/locations';
 import {API_KEY} from '../../../apikey';
-import PlaceResult = google.maps.places.PlaceResult;
 
 @Component({
   selector: 'app-places',
@@ -17,9 +16,11 @@ export class PlacesComponent implements OnInit {
   placeType: string;
   imageMaxWidth: number;
   API_KEY: string;
+  placeDetailsArray: any;
 
   constructor(private placesApiService: PlacesApiService, private geoLocationService: GeoLocationService, private activatedRoute: ActivatedRoute) {
     this.places = [];
+    this.placeDetailsArray = [];
     this.imageMaxWidth = 500;
     this.API_KEY = API_KEY;
   }
@@ -35,16 +36,17 @@ export class PlacesComponent implements OnInit {
       });
     }, error => {
       console.error(error.message);
-      this.placesApiService.getNearbyPlaces(ALMERE_ESPLANADE, this.placeType).subscribe(places => {
+      this.placesApiService.getNearbyPlaces(ALMERE_CENTRUM, this.placeType).subscribe(places => {
         this.places = places;
       });
     });
   }
 
-  getPlaceDetails(place: PlaceResult) {
-    this.placesApiService.getPlaceDetails(place.place_id).subscribe(placeResult => {
-      console.log(this.places.results);
-      console.log(this.places.findIndex(item => item.place_id === 'test'));
-    });
+  getPlaceDetails(placeID: string, placeIndex: number) {
+    if (!this.placeDetailsArray[placeIndex]) {
+      this.placesApiService.getPlaceDetails(placeID).subscribe(placeResult => {
+        this.placeDetailsArray[placeIndex] = placeResult['result'];
+      });
+    }
   }
 }

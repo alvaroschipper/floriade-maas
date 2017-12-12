@@ -1,37 +1,41 @@
 <div class="container">
   <div class="row">
-    <div *ngFor="let place of places.results">
+    <div *ngFor="let place of places.results; let i = index">
       <div *ngIf="place.photos" class="col s12 m6">
-        <div (click)="getPlaceDetails(place)" class="hoverable card small">
+        <div (click)="getPlaceDetails(place.place_id, i)" class="hoverable card small">
           <div class="card-image waves-effect waves-block waves-light">
-            <img class="activator" src="https://maps.googleapis.com/maps/api/place/photo?photoreference={{place.photos[0].photo_reference}}&maxwidth={{imageMaxWidth}}&key={{API_KEY}}">
+            <!--<img class="activator" src="https://maps.googleapis.com/maps/api/place/photo?photoreference={{place.photos[0].photo_reference}}&maxwidth={{imageMaxWidth}}&key={{API_KEY}}">-->
+            <img class="activator" src="../../assets/Red_Bay-1440.jpg">
           </div>
           <div class="card-content">
-            <i class="material-icons right">more_vert</i>
             <span class="card-title grey-text text-darken-4 truncate">{{place.name}}</span>
-<!--
             <span *ngIf="place.rating" class="rating orange-text darken-4"><i class="rating material-icons">stars</i> {{place.rating}}</span>
-
-            <span *ngIf="place.price_level" class="rating green-text darken-4"><i class="rating material-icons">attach_money</i> {{place.price_level}}</span>
-            <div class="orange-text darken-4">
-              <span *ngFor="let index of [1,2,3,4,5]">
-                <i *ngIf="index < place.rating" class="rating material-icons">star</i>
-              </span>
-                <i *ngIf="place.rating % index !== 0" class="rating material-icons">star_half</i>
-              <span *ngFor="let index of [1,2,3,4,5]" class="orange-text darken-4">
-                <i *ngIf="index >= place.rating" class="rating material-icons">star_border</i>
-              </span>
-            </div>
--->
           </div>
           <div class="card-reveal">
-            <span class="card-title grey-text text-darken-4 truncate">{{place.name}}<i class="material-icons right">close</i></span>
-            <p>{{place.formatted_address}}</p>
-            <p>{{place.international_phone_number}}</p>
-            <p>{{place.opening_hours}}</p>
-            <p>{{place.price_level}}</p>
-            <p>{{place.rating}}</p>
-            <p>{{place.website}}</p>
+            <div *ngIf="placeDetailsArray[i]">
+              <span class="card-title grey-text text-darken-4 truncate">{{placeDetailsArray[i].name}}<i class="material-icons right">close</i></span>
+              <p>{{placeDetailsArray[i].formatted_address}}</p>
+              <p><a href="tel:{{placeDetailsArray[i].international_phone_number}}">{{placeDetailsArray[i].international_phone_number}}</a></p>
+              <p><a target="_blank" href="{{placeDetailsArray[i].website}}">{{placeDetailsArray[i].website}}</a></p>
+            </div>
+            <div class="card-action">
+              <a class="waves-effect waves-light btn-large"><i class="material-icons right">directions</i>Navigate</a>
+            </div>
+            <div *ngIf="!placeDetailsArray[i]" class="preloader-background">
+              <div class="preloader-wrapper big active">
+                <div class="spinner-layer spinner-green-only">
+                  <div class="circle-clipper left">
+                    <div class="circle"></div>
+                  </div>
+                  <div class="gap-patch">
+                    <div class="circle"></div>
+                  </div>
+                  <div class="circle-clipper right">
+                    <div class="circle"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>

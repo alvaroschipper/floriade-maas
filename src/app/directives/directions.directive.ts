@@ -36,7 +36,7 @@ export class DirectionsDirective implements OnChanges {
           this.response = response;
           this.directionsDisplay.setDirections(this.response);
         } else {
-          console.log('Directions request failed due to ' + status);
+          console.error('Directions request failed due to ' + status);
         }
       });
     });
