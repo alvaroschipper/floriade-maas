@@ -2,7 +2,7 @@
   <div class="row">
     <div *ngFor="let options of placeOptions">
       <div class="col s12 m4 l4">
-        <div class="card modal-trigger" [attr.data-target]="options.category">
+        <div class="card-panel z-index-2 modal-trigger" [attr.data-target]="options.category">
           <div class="card-content activator center">
             <i class="material-icons large">{{options.categoryIcon}}</i>
             <h1 class="activator text">{{options.category}}</h1>

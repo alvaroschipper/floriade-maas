@@ -4,6 +4,7 @@ import {PlacesApiService} from '../services/places-api.service';
 import {ActivatedRoute} from '@angular/router';
 import {ALMERE_CENTRUM} from '../domain/locations';
 import {API_KEY} from '../../../apikey';
+import {LatLngLiteral} from '@agm/core';
 
 @Component({
   selector: 'app-places',
@@ -17,6 +18,7 @@ export class PlacesComponent implements OnInit {
   imageMaxWidth: number;
   API_KEY: string;
   placeDetailsArray: any;
+  placeDestination: LatLngLiteral;
 
   constructor(private placesApiService: PlacesApiService, private geoLocationService: GeoLocationService, private activatedRoute: ActivatedRoute) {
     this.places = [];
@@ -48,5 +50,9 @@ export class PlacesComponent implements OnInit {
         this.placeDetailsArray[placeIndex] = placeResult['result'];
       });
     }
+  }
+
+  planRouteToPlace(destination: LatLngLiteral){
+    this.placeDestination = destination;
   }
 }
