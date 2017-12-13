@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {GeoLocationService} from '../services/geo-location.service';
 import {DistanceMatrixApiService} from '../services/distance-matrix-api.service';
-import {ALMERE_FLORIADE} from '../domain/locations';
+import {ALMERE_CENTRUM, ALMERE_ESPLANADE, ALMERE_FLORIADE} from '../domain/locations';
 
 @Component({
   selector: 'app-route-options',
@@ -52,11 +52,16 @@ export class RouteOptionsComponent implements OnInit {
 
   ngOnInit() {
     this.geoLocationService.getGeoLocation().then(position => {
-      const origin = {lat: position.coords.latitude, lng: position.coords.longitude};
-      const destination = ALMERE_FLORIADE;
       for (const routeOption of this.routeOptions) {
-        this.distanceMatrixApiService.getTimeAndDistance(origin, destination, routeOption.travelMode).subscribe(json => {
-          console.log(json);
+        this.distanceMatrixApiService.getTimeAndDistance({lat: position.coords.latitude, lng: position.coords.longitude}, ALMERE_FLORIADE, routeOption.travelMode).subscribe(json => {
+          routeOption.travelTime = json['rows'][0]['elements'][0]['duration']['text'];
+          routeOption.travelDistance = json['rows'][0]['elements'][0]['distance']['text'];
+        });
+      }
+    }, error => {
+      console.error(error.message);
+      for (const routeOption of this.routeOptions) {
+        this.distanceMatrixApiService.getTimeAndDistance(ALMERE_CENTRUM, ALMERE_FLORIADE, routeOption.travelMode).subscribe(json => {
           routeOption.travelTime = json['rows'][0]['elements'][0]['duration']['text'];
           routeOption.travelDistance = json['rows'][0]['elements'][0]['distance']['text'];
         });

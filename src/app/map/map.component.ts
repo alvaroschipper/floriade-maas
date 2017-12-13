@@ -25,7 +25,6 @@ export class MapComponent implements OnInit {
   iconUrl: string;
 
   constructor(private geoLocationService: GeoLocationService, private mapsAPILoader: MapsAPILoader, private activatedRoute: ActivatedRoute) {
-    this.origin = ALMERE_CENTRUM;
     this.destination = ALMERE_FLORIADE;
     this.zoom = 17;
     this.streetViewControl = false;
@@ -48,7 +47,8 @@ export class MapComponent implements OnInit {
     this.geoLocationService.getGeoLocation().then(position => {
       this.origin = {lat: position.coords.latitude, lng: position.coords.longitude};
     }).catch(error => {
-      console.log(error.message);
+      console.error(error.message);
+      this.origin = ALMERE_CENTRUM;
     });
   }
 

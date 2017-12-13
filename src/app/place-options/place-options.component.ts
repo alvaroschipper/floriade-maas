@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, OnInit} from '@angular/core';
+import {AfterViewInit, Component} from '@angular/core';
 
 declare let $: any;
 
@@ -7,7 +7,7 @@ declare let $: any;
   templateUrl: './place-options.component.html',
   styleUrls: ['./place-options.component.css']
 })
-export class PlaceOptionsComponent implements OnInit, AfterViewInit {
+export class PlaceOptionsComponent implements AfterViewInit {
 
   placeOptions: [{
     category: String,
@@ -81,10 +81,6 @@ export class PlaceOptionsComponent implements OnInit, AfterViewInit {
     ];
   }
 
-
-  ngOnInit() {
-    console.log(this.placeOptions);
-  }
   ngAfterViewInit() {
     $('.modal').modal();
   }
