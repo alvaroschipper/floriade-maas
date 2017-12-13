@@ -1,6 +1,8 @@
 .brand-logo {
   cursor: pointer;
+  font-size: 1.5em;
 }
+
 nav, .nav-wrapper, .material-icons {
   height: 9vh;
   line-height: 9vh;
@@ -12,6 +14,7 @@ nav, .nav-wrapper, .material-icons {
 .material-icons {
   display: inline;
 }
+
 a {
   line-height: 100%;
 }

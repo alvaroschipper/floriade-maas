@@ -25,8 +25,7 @@ export class MapComponent implements OnInit {
   iconUrl: string;
 
   constructor(private geoLocationService: GeoLocationService, private mapsAPILoader: MapsAPILoader, private activatedRoute: ActivatedRoute) {
-    this.destination = ALMERE_FLORIADE;
-    this.zoom = 17;
+    this.zoom = 16;
     this.streetViewControl = false;
     this.iconUrl = '../../assets/user_location_marker.png';
   }
@@ -40,6 +39,11 @@ export class MapComponent implements OnInit {
     this.setLocation();
     this.activatedRoute.paramMap.subscribe(params => {
       this.directionsDirective.travelMode = params.get('travelMode');
+      if(params.get('destination.lat')) {
+        this.destination = {lat: Number(params.get('destination.lat')), lng: Number(params.get('destination.lng'))};
+      } else {
+        this.destination = ALMERE_FLORIADE;
+      }
     });
   }
 

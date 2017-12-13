@@ -13,7 +13,8 @@ const routes: Routes = [
   {path: 'route-options', component: RouteOptionsComponent},
   {path: 'route/:travelMode', component: MapComponent},
   {path: 'place-options', component: PlaceOptionsComponent},
-  {path: 'places/:type', component: PlacesComponent}
+  {path: 'places/:type', component: PlacesComponent},
+  {path: 'route/:travelMode/:destination.lat/:destination.lng', component: MapComponent}
 ];
 
 @NgModule({

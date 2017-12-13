@@ -1,9 +1,37 @@
 /* You can add global styles to this file, and also import other style files */
 @import url('https://fonts.googleapis.com/css?family=Roboto');
+@import url('https://fonts.googleapis.com/css?family=Raleway');
 @import url('https://fonts.googleapis.com/icon?family=Material+Icons');
 @import url('https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-alpha.1/css/materialize.min.css');
 
 body {
-  font-family: 'Roboto', sans-serif;
-  background-color: #FAFAFA;
+  font-family: 'Raleway', 'Roboto', sans-serif;
+  background-color: #F4FFF4;
+}
+
+.container {
+  padding-top: 20px;
+}
+
+.waves-effect {
+  display: block;
+}
+
+.card-panel {
+  margin: 2em auto 0;
+  transition: all 0.3s ease;
+}
+.card-panel:hover {
+  box-shadow: 0px 0px 50px -7px rgba(0,0,0,0.75);
+}
+
+.text {
+  font-size: 3em;
+}
+.large {
+  font-size: 9em;
+}
+
+.card, .card-panel {
+  cursor: pointer;
 }
