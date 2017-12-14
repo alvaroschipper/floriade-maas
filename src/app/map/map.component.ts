@@ -1,19 +1,21 @@
-import {Component, HostListener, OnInit, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, HostListener, OnInit, ViewChild} from '@angular/core';
 import {AgmMap, LatLngLiteral, MapsAPILoader} from '@agm/core';
 
 import {GeoLocationService} from '../services/geo-location.service';
 import {DirectionsDirective} from '../directives/directions.directive';
 import {ActivatedRoute} from '@angular/router';
 import {ALMERE_CENTRUM, ALMERE_FLORIADE} from '../domain/locations';
+import {PLACE_OPTIONS} from '../domain/place-options';
 
 declare const google: any;
+declare let $: any;
 
 @Component({
   selector: 'app-map',
   templateUrl: './map.component.html',
   styleUrls: ['./map.component.css']
 })
-export class MapComponent implements OnInit {
+export class MapComponent implements OnInit, AfterViewInit {
 
   @ViewChild(AgmMap) agmMap: AgmMap;
   @ViewChild(DirectionsDirective) directionsDirective: DirectionsDirective;
@@ -23,11 +25,13 @@ export class MapComponent implements OnInit {
   zoom: number;
   streetViewControl: boolean;
   iconUrl: string;
+  placeOptions: any;
 
   constructor(private geoLocationService: GeoLocationService, private mapsAPILoader: MapsAPILoader, private activatedRoute: ActivatedRoute) {
     this.zoom = 16;
     this.streetViewControl = false;
     this.iconUrl = '../../assets/user_location_marker.png';
+    this.placeOptions = PLACE_OPTIONS;
   }
 
   ngOnInit() {
@@ -62,5 +66,10 @@ export class MapComponent implements OnInit {
     this.agmMap.triggerResize()
       .then(() => (this.agmMap as any)._mapsWrapper.setCenter(bounds.getCenter()))
       .then(() => (this.agmMap as any)._mapsWrapper.fitBounds(bounds));
+  }
+
+  ngAfterViewInit() {
+    $('.modal').modal();
+    $('.tooltipped').tooltip({delay: 50});
   }
 }

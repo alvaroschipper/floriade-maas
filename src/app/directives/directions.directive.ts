@@ -24,6 +24,7 @@ export class DirectionsDirective implements OnChanges {
     this.googleMapsAPIWrapper.getNativeMap().then(map => {
       const directionsService = new google.maps.DirectionsService;
       this.directionsDisplay.setMap(map);
+      this.directionsDisplay.setPanel(document.getElementById('directionsPanel'));
       this.directionsDisplay.setOptions({
         suppressMarkers: true
       });
