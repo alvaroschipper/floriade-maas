@@ -19,7 +19,7 @@
             </div>
             <div class="card-action">
               <a class="waves-effect waves-light btn-large green darken-1"
-                 routerLink="../../route/WALKING/{{place.geometry.location.lat}}/{{place.geometry.location.lng}}"><i class="material-icons right">directions</i>Navigate</a>
+                 routerLink="/route/WALKING/{{place.geometry.location.lat}}/{{place.geometry.location.lng}}"><i class="material-icons right">directions</i>Navigate</a>
             </div>
             <div *ngIf="!placeDetailsArray[i]" class="preloader-background">
               <div class="preloader-wrapper big active">
