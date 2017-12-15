@@ -2,18 +2,17 @@ agm-map {
   height: 102%;
 }
 
-::-webkit-scrollbar {
-  width: 0px;
-  background: transparent;
-}
-
 @media only screen and (max-width : 480px) {
-  .modal {
+  #directionsPanelModal {
     width: 95vw;
   }
 }
 .directions {
   margin-bottom: 15px;
+}
+
+.explore {
+  margin-bottom: 85px;
 }
 
 .material-icons {

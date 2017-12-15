@@ -1,6 +1,4 @@
 <agm-map [latitude]="origin.lat" [longitude]="origin.lng" [zoom]="zoom" [streetViewControl]="streetViewControl" [zoomControl]="false">
-  <agm-marker [latitude]="origin.lat" [longitude]="origin.lng" [iconUrl]="iconUrl"></agm-marker>
-  <agm-marker [latitude]="destination.lat" [longitude]="destination.lng"></agm-marker>
   <appDirections [origin]="origin" [destination]="destination"></appDirections>
 </agm-map>
 
@@ -8,6 +6,17 @@
   <a class="btn-floating btn-large white modal-trigger tooltipped" data-target="directionsPanelModal"
      data-position="left" data-tooltip="Turn-by-turn navigation"><i class="material-icons">map</i>
   </a>
+</div>
+<div *ngIf="enableExplore" class="fixed-action-btn horizontal explore">
+  <a class="btn-floating btn-large white tooltipped"
+     data-position="left" data-tooltip="Explore"><i class="material-icons">explore</i>
+  </a>
+  <ul>
+    <li *ngFor="let options of placeOptions">
+      <a class="btn-floating white modal-trigger tooltipped" [attr.data-target]="options.category" data-position="left"
+         [attr.data-tooltip]="options.category"><i class="material-icons">{{options.categoryIcon}}</i></a>
+    </li>
+  </ul>
 </div>
 
 <div id="directionsPanelModal" class="modal">
@@ -17,3 +26,15 @@
   </div>
 </div>
 
+<div *ngFor="let options of placeOptions" [attr.id]="options.category" class="modal bottom-sheet">
+  <div class="modal-content center">
+    <h4 class="center">{{options.category}}</h4>
+    <section>
+      <div class="card card--content modal-close flow-text center-align {{types.color}} z-depth-3"
+           *ngFor="let types of options.types"
+           routerLink="/places/WP/{{types.type}}">
+        <div class="types-name white-text">{{types.name}}</div>
+      </div>
+    </section>
+  </div>
+</div>

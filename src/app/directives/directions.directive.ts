@@ -10,6 +10,7 @@ export class DirectionsDirective implements OnChanges {
 
   @Input() origin: any;
   @Input() destination: any;
+  waypoint: any;
   travelMode: string;
   directionsDisplay: any;
   response: any;
@@ -26,20 +27,38 @@ export class DirectionsDirective implements OnChanges {
       this.directionsDisplay.setMap(map);
       this.directionsDisplay.setPanel(document.getElementById('directionsPanel'));
       this.directionsDisplay.setOptions({
-        suppressMarkers: true
       });
-      directionsService.route({
-        origin: this.origin,
-        destination: this.destination,
-        travelMode: this.travelMode
-      }, (response, status) => {
-        if (status === 'OK') {
-          this.response = response;
-          this.directionsDisplay.setDirections(this.response);
-        } else {
-          console.error('Directions request failed due to ' + status);
-        }
-      });
+      if(this.waypoint) {
+        directionsService.route({
+          origin: this.origin,
+          destination: this.destination,
+          waypoints: [{'location': this.waypoint}],
+          optimizeWaypoints: true,
+          travelMode: this.travelMode
+        }, (response, status) => {
+          if (status === 'OK') {
+            this.response = response;
+            this.directionsDisplay.setDirections(this.response);
+          } else {
+            console.error('Directions request failed due to ' + status);
+          }
+        });
+      } else {
+        directionsService.route({
+          origin: this.origin,
+          destination: this.destination,
+          waypoints: [],
+          optimizeWaypoints: true,
+          travelMode: this.travelMode
+        }, (response, status) => {
+          if (status === 'OK') {
+            this.response = response;
+            this.directionsDisplay.setDirections(this.response);
+          } else {
+            console.error('Directions request failed due to ' + status);
+          }
+        });
+      }
     });
   }
 }
