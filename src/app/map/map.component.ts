@@ -22,16 +22,19 @@ export class MapComponent implements OnInit, AfterViewInit {
 
   origin: LatLngLiteral;
   destination: LatLngLiteral;
+  waypoint: LatLngLiteral;
   zoom: number;
   streetViewControl: boolean;
   iconUrl: string;
   placeOptions: any;
+  enableExplore: boolean;
 
   constructor(private geoLocationService: GeoLocationService, private mapsAPILoader: MapsAPILoader, private activatedRoute: ActivatedRoute) {
     this.zoom = 16;
     this.streetViewControl = false;
     this.iconUrl = '../../assets/user_location_marker.png';
     this.placeOptions = PLACE_OPTIONS;
+    this.enableExplore = true;
   }
 
   ngOnInit() {
@@ -44,7 +47,14 @@ export class MapComponent implements OnInit, AfterViewInit {
     this.activatedRoute.paramMap.subscribe(params => {
       this.directionsDirective.travelMode = params.get('travelMode');
       if(params.get('destination.lat')) {
-        this.destination = {lat: Number(params.get('destination.lat')), lng: Number(params.get('destination.lng'))};
+        this.enableExplore = false;
+        if(params.get('WP')) {
+          this.directionsDirective.waypoint = {lat: Number(params.get('destination.lat')), lng: Number(params.get('destination.lng'))};
+          this.waypoint = {lat: Number(params.get('destination.lat')), lng: Number(params.get('destination.lng'))};
+          this.destination = ALMERE_FLORIADE;
+        } else {
+          this.destination = {lat: Number(params.get('destination.lat')), lng: Number(params.get('destination.lng'))};
+        }
       } else {
         this.destination = ALMERE_FLORIADE;
       }

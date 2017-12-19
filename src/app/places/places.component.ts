@@ -19,17 +19,22 @@ export class PlacesComponent implements OnInit {
   API_KEY: string;
   placeDetailsArray: any;
   placeDestination: LatLngLiteral;
+  waypoint: boolean;
 
   constructor(private placesApiService: PlacesApiService, private geoLocationService: GeoLocationService, private activatedRoute: ActivatedRoute) {
     this.places = [];
     this.placeDetailsArray = [];
     this.imageMaxWidth = 500;
     this.API_KEY = API_KEY;
+    this.waypoint = false;
   }
 
   ngOnInit() {
     this.activatedRoute.paramMap.subscribe(params => {
       this.placeType = params.get('type');
+      if(params.get('WP')) {
+        this.waypoint = true;
+      }
     });
     this.geoLocationService.getGeoLocation().then(position => {
       const origin = {lat: position.coords.latitude, lng: position.coords.longitude};
