@@ -28,6 +28,8 @@ export class MapComponent implements OnInit, AfterViewInit {
   iconUrl: string;
   placeOptions: any;
   enableExplore: boolean;
+  travelMode: string;
+
 
   constructor(private geoLocationService: GeoLocationService, private mapsAPILoader: MapsAPILoader, private activatedRoute: ActivatedRoute) {
     this.zoom = 16;
@@ -45,7 +47,8 @@ export class MapComponent implements OnInit, AfterViewInit {
     }
     this.setLocation();
     this.activatedRoute.paramMap.subscribe(params => {
-      this.directionsDirective.travelMode = params.get('travelMode');
+      this.travelMode = params.get('travelMode');
+      this.directionsDirective.travelMode = this.travelMode;
       if(params.get('destination.lat')) {
         this.enableExplore = false;
         if(params.get('WP')) {

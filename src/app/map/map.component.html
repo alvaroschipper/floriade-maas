@@ -7,16 +7,18 @@
      data-position="left" data-tooltip="Turn-by-turn navigation"><i class="material-icons">map</i>
   </a>
 </div>
-<div *ngIf="enableExplore" class="fixed-action-btn horizontal explore">
-  <a class="btn-floating btn-large white tooltipped"
-     data-position="left" data-tooltip="Explore"><i class="material-icons">explore</i>
-  </a>
-  <ul>
-    <li *ngFor="let options of placeOptions">
-      <a class="btn-floating white modal-trigger tooltipped" [attr.data-target]="options.category" data-position="left"
-         [attr.data-tooltip]="options.category"><i class="material-icons">{{options.categoryIcon}}</i></a>
-    </li>
-  </ul>
+<div *ngIf="travelMode == 'WALKING'">
+  <div *ngIf="enableExplore" class="fixed-action-btn horizontal explore">
+    <a class="btn-floating btn-large white tooltipped"
+       data-position="left" data-tooltip="Explore"><i class="material-icons">explore</i>
+    </a>
+    <ul>
+      <li *ngFor="let options of placeOptions">
+        <a class="btn-floating white modal-trigger tooltipped" [attr.data-target]="options.category" data-position="left"
+           [attr.data-tooltip]="options.category"><i class="material-icons">{{options.categoryIcon}}</i></a>
+      </li>
+    </ul>
+  </div>
 </div>
 
 <div id="directionsPanelModal" class="modal">
