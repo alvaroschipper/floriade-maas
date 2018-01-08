@@ -7,7 +7,7 @@ export const ROUTE_OPTIONS = [
     travelDistance: null
   },
   {
-    travelMode: 'TRANSIT',
+    travelMode: 'FLOKIK',
     name: 'FloKik',
     icon: 'directions_boat',
     travelTime: null,

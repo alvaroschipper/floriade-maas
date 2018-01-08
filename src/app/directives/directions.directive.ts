@@ -1,5 +1,6 @@
 import {Directive, Input, OnChanges} from '@angular/core';
 import {GoogleMapsAPIWrapper} from '@agm/core';
+import {FLOKIK_START} from '../domain/locations';
 
 declare const google: any;
 
@@ -26,9 +27,31 @@ export class DirectionsDirective implements OnChanges {
       const directionsService = new google.maps.DirectionsService;
       this.directionsDisplay.setMap(map);
       this.directionsDisplay.setPanel(document.getElementById('directionsPanel'));
-      this.directionsDisplay.setOptions({
-      });
-      if(this.waypoint) {
+      if (this.travelMode === 'FLOKIK') {
+        this.travelMode = 'WALKING';
+        this.destination = FLOKIK_START;
+        this.directionsDisplay.setOptions({
+          suppressMarkers: true,
+          polylineOptions: {
+            strokeOpacity: 0,
+            icons: [{
+              icon: {
+                path: google.maps.SymbolPath.CIRCLE,
+                fillColor: '#4ec9fa',
+                fillOpacity: 1,
+                scale: 3,
+                strokeColor: '#529ad7',
+                strokeOpacity: 1,
+                strokeWeight: 1.2
+              },
+              offset: '0',
+              repeat: '11px'
+            }]
+          }
+        });
+      }
+
+      if (this.waypoint) {
         directionsService.route({
           origin: this.origin,
           destination: this.destination,

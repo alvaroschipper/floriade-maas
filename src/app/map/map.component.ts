@@ -4,7 +4,7 @@ import {AgmMap, LatLngLiteral, MapsAPILoader} from '@agm/core';
 import {GeoLocationService} from '../services/geo-location.service';
 import {DirectionsDirective} from '../directives/directions.directive';
 import {ActivatedRoute} from '@angular/router';
-import {ALMERE_CENTRUM, ALMERE_FLORIADE} from '../domain/locations';
+import {ALMERE_CENTRUM, ALMERE_FLORIADE, FLOKIK_START, FLOKIK_STOP, FLOKIK_WEERWATER} from '../domain/locations';
 import {PLACE_OPTIONS} from '../domain/place-options';
 
 declare const google: any;
@@ -29,6 +29,7 @@ export class MapComponent implements OnInit, AfterViewInit {
   placeOptions: any;
   enableExplore: boolean;
   travelMode: string;
+  flokik: any;
 
 
   constructor(private geoLocationService: GeoLocationService, private mapsAPILoader: MapsAPILoader, private activatedRoute: ActivatedRoute) {
@@ -37,7 +38,8 @@ export class MapComponent implements OnInit, AfterViewInit {
     this.iconUrl = '../../assets/user_location_marker.png';
     this.placeOptions = PLACE_OPTIONS;
     this.enableExplore = true;
-  }
+    this.flokik = [FLOKIK_START, FLOKIK_WEERWATER, FLOKIK_STOP];
+}
 
   ngOnInit() {
     if (this.directionsDirective.directionsDisplay === undefined) {
@@ -49,9 +51,9 @@ export class MapComponent implements OnInit, AfterViewInit {
     this.activatedRoute.paramMap.subscribe(params => {
       this.travelMode = params.get('travelMode');
       this.directionsDirective.travelMode = this.travelMode;
-      if(params.get('destination.lat')) {
+      if (params.get('destination.lat')) {
         this.enableExplore = false;
-        if(params.get('WP')) {
+        if (params.get('WP')) {
           this.directionsDirective.waypoint = {lat: Number(params.get('destination.lat')), lng: Number(params.get('destination.lng'))};
           this.waypoint = {lat: Number(params.get('destination.lat')), lng: Number(params.get('destination.lng'))};
           this.destination = ALMERE_FLORIADE;

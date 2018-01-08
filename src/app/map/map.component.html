@@ -1,4 +1,14 @@
 <agm-map [latitude]="origin.lat" [longitude]="origin.lng" [zoom]="zoom" [streetViewControl]="streetViewControl" [zoomControl]="false">
+  <div *ngIf="travelMode == 'FLOKIK'">
+    <agm-polyline [strokeColor]="'#78bbff'" [strokeWeight]="'7'">
+      <agm-polyline-point [latitude]="flokik[0].lat" [longitude]="flokik[0].lng"></agm-polyline-point>
+      <agm-polyline-point [latitude]="flokik[1].lat" [longitude]="flokik[1].lng"></agm-polyline-point>
+      <agm-polyline-point [latitude]="flokik[2].lat" [longitude]="flokik[2].lng"></agm-polyline-point>
+    </agm-polyline>
+    <agm-marker [latitude]="origin.lat" [longitude]="origin.lng" [label]="'A'"></agm-marker>
+    <agm-marker [latitude]="flokik[0].lat" [longitude]="flokik[0].lng" [label]="'B'"></agm-marker>
+    <agm-marker [latitude]="flokik[2].lat" [longitude]="flokik[2].lng" [label]="'C'"></agm-marker>
+  </div>
   <appDirections [origin]="origin" [destination]="destination"></appDirections>
 </agm-map>
 

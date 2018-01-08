@@ -8,6 +8,7 @@
           <a>
             <i class="material-icons">arrow_back</i>
             <i *ngIf="location.path().includes('WALKING')" class="material-icons">directions_walk</i>
+            <i *ngIf="location.path().includes('FLOKIK')" class="material-icons">directions_boat</i>
             <i *ngIf="location.path().includes('TRANSIT')" class="material-icons">directions_transit</i>
             <i *ngIf="location.path().includes('BICYCLING')" class="material-icons">directions_bike</i>
           </a>
