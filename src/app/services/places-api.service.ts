@@ -11,7 +11,7 @@ export class PlacesApiService {
   constructor(private httpClient: HttpClient) {
   }
 
-  getNearbyPlaces(origin: LatLngLiteral, type: string): Observable<[PlaceResult]> {
+  public getNearbyPlaces(origin: LatLngLiteral, type: string): Observable<[PlaceResult]> {
 
     const url = 'https://maps.googleapis.com/maps/api/place/nearbysearch/json'
       + '?location=' + origin.lat + ',' + origin.lng
@@ -23,7 +23,7 @@ export class PlacesApiService {
     return this.httpClient.get<[PlaceResult]>(url);
   }
 
-  getPlaceDetails(placeID: String): Observable<PlaceResult> {
+  public getPlaceDetails(placeID: String): Observable<PlaceResult> {
     const url = 'https://maps.googleapis.com/maps/api/place/details/json'
       + '?placeid=' + placeID
       + '&key=' + API_KEY;

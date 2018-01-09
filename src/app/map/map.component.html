@@ -1,12 +1,27 @@
 <agm-map [latitude]="origin.lat" [longitude]="origin.lng" [zoom]="zoom" [streetViewControl]="streetViewControl" [zoomControl]="false">
+  <div *ngIf="travelMode == 'FLOKIK'">
+    <agm-polyline [strokeColor]="'#78bbff'" [strokeWeight]="'7'">
+      <agm-polyline-point [latitude]="flokik[0].lat" [longitude]="flokik[0].lng"></agm-polyline-point>
+      <agm-polyline-point [latitude]="flokik[1].lat" [longitude]="flokik[1].lng"></agm-polyline-point>
+      <agm-polyline-point [latitude]="flokik[2].lat" [longitude]="flokik[2].lng"></agm-polyline-point>
+    </agm-polyline>
+    <agm-marker [latitude]="origin.lat" [longitude]="origin.lng" [label]="'A'"></agm-marker>
+    <agm-marker [latitude]="flokik[0].lat" [longitude]="flokik[0].lng" [label]="'B'"></agm-marker>
+    <agm-marker [latitude]="flokik[2].lat" [longitude]="flokik[2].lng" [label]="'C'"></agm-marker>
+  </div>
   <appDirections [origin]="origin" [destination]="destination"></appDirections>
 </agm-map>
-
+<!--
+<div class="fixed-action-btn location">
+  <a (click)="setOrigin()" class="btn-floating btn-large white tooltipped" data-position="left" data-tooltip="Update location"><i class="material-icons">my_location</i></a>
+</div>
+-->
 <div class="fixed-action-btn directions">
   <a class="btn-floating btn-large white modal-trigger tooltipped" data-target="directionsPanelModal"
      data-position="left" data-tooltip="Turn-by-turn navigation"><i class="material-icons">map</i>
   </a>
 </div>
+
 <div *ngIf="travelMode == 'WALKING'">
   <div *ngIf="enableExplore" class="fixed-action-btn horizontal explore">
     <a class="btn-floating btn-large white tooltipped"

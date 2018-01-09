@@ -10,7 +10,11 @@ agm-map {
 .directions {
   margin-bottom: 15px;
 }
-
+/*
+.location {
+  margin-bottom: 500px;
+}
+*/
 .explore {
   margin-bottom: 85px;
 }
