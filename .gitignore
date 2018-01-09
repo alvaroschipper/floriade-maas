@@ -42,5 +42,5 @@ testem.log
 Thumbs.db
 
 # credentials
-/ssl
-apikey.ts
+# /ssl
+# apikey.ts
