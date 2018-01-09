@@ -2,6 +2,15 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.6.3.
 
+## Setup
+
+Run `npm install` to setup the project.
+
+## API Key
+
+Enter your own Google API key in the apikey.ts file.
+The Google API key can be retrieved [here](http://console.developers.google.com/).
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
@@ -10,11 +19,6 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app w
 
 If you want to use the Angular App on mobile, you need to have an SSL certificate.
 [Create](http://www.habilelabs.io/create-self-signed-ssl-certificate/) your own SSL certificates and put them in the ssl folder.
-
-## API Key
-
-Enter your own Google API key in the apikey.ts file.
-The Google API key can be retreived [here](http://console.developers.google.com/).
 
 ## Development server with SSL
 
