@@ -1,6 +1,6 @@
 {
   "name": "floriade-maas",
-  "version": "0.14.1",
+  "version": "0.14.2",
   "license": "MIT",
   "scripts": {
     "ng": "ng",
