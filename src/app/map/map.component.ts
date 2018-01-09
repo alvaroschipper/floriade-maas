@@ -22,7 +22,7 @@ export class MapComponent implements OnInit, AfterViewInit {
 
   origin: LatLngLiteral;
   destination: LatLngLiteral;
-  waypoint: LatLngLiteral;
+  waypoint: any;
   zoom: number;
   streetViewControl: boolean;
   iconUrl: string;
@@ -33,6 +33,8 @@ export class MapComponent implements OnInit, AfterViewInit {
 
 
   constructor(private geoLocationService: GeoLocationService, private mapsAPILoader: MapsAPILoader, private activatedRoute: ActivatedRoute) {
+    this.origin = ALMERE_CENTRUM;
+    this.waypoint = [];
     this.zoom = 16;
     this.streetViewControl = false;
     this.iconUrl = '../../assets/user_location_marker.png';
@@ -42,20 +44,47 @@ export class MapComponent implements OnInit, AfterViewInit {
 }
 
   ngOnInit() {
+    this.setupDirectionsDirective();
+    this.setOrigin();
+    this.setDestination();
+  }
+
+  ngAfterViewInit() {
+    $('.modal').modal();
+    $('.tooltipped').tooltip({delay: 50});
+  }
+
+  private setupDirectionsDirective() {
     if (this.directionsDirective.directionsDisplay === undefined) {
       this.mapsAPILoader.load().then(() => {
         this.directionsDirective.directionsDisplay = new google.maps.DirectionsRenderer;
       });
     }
-    this.setLocation();
+  }
+
+  private setOrigin() {
+    if (navigator.geolocation) {
+      navigator.geolocation.watchPosition(position => {
+        console.log('Position check');
+        if (this.origin.lat !== Number(position.coords.latitude) || this.origin.lng !== Number(position.coords.longitude)) {
+          this.origin = {lat: Number(position.coords.latitude), lng: Number(position.coords.longitude)};
+          console.log('Position update');
+        }
+      }, error => {
+        console.error(error.message);
+      }, {enableHighAccuracy: true});
+    }
+  }
+
+  private setDestination() {
     this.activatedRoute.paramMap.subscribe(params => {
       this.travelMode = params.get('travelMode');
       this.directionsDirective.travelMode = this.travelMode;
       if (params.get('destination.lat')) {
         this.enableExplore = false;
         if (params.get('WP')) {
-          this.directionsDirective.waypoint = {lat: Number(params.get('destination.lat')), lng: Number(params.get('destination.lng'))};
-          this.waypoint = {lat: Number(params.get('destination.lat')), lng: Number(params.get('destination.lng'))};
+          this.waypoint = [{'location': {lat: Number(params.get('destination.lat')), lng: Number(params.get('destination.lng'))}}];
+          this.directionsDirective.waypoint = this.waypoint;
           this.destination = ALMERE_FLORIADE;
         } else {
           this.destination = {lat: Number(params.get('destination.lat')), lng: Number(params.get('destination.lng'))};
@@ -66,25 +95,11 @@ export class MapComponent implements OnInit, AfterViewInit {
     });
   }
 
-  setLocation() {
-    this.geoLocationService.getGeoLocation().then(position => {
-      this.origin = {lat: position.coords.latitude, lng: position.coords.longitude};
-    }).catch(error => {
-      console.error(error.message);
-      this.origin = ALMERE_CENTRUM;
-    });
-  }
-
   @HostListener('window:resize')
-  centerRoute() {
+  private centerRoute() {
     const bounds = this.directionsDirective.response.routes[0].bounds;
     this.agmMap.triggerResize()
       .then(() => (this.agmMap as any)._mapsWrapper.setCenter(bounds.getCenter()))
       .then(() => (this.agmMap as any)._mapsWrapper.fitBounds(bounds));
-  }
-
-  ngAfterViewInit() {
-    $('.modal').modal();
-    $('.tooltipped').tooltip({delay: 50});
   }
 }

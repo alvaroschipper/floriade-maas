@@ -13,24 +13,26 @@ export class DirectionsDirective implements OnChanges {
   @Input() destination: any;
   waypoint: any;
   travelMode: string;
+  directionsService: any;
   directionsDisplay: any;
   response: any;
+  routeOptions: any;
 
-  constructor(private googleMapsAPIWrapper: GoogleMapsAPIWrapper) {}
+  constructor(private googleMapsAPIWrapper: GoogleMapsAPIWrapper) { }
 
   ngOnChanges() {
     this.updateDirections();
   }
 
-  updateDirections() {
+  private updateDirections() {
     this.googleMapsAPIWrapper.getNativeMap().then(map => {
-      const directionsService = new google.maps.DirectionsService;
+      this.directionsService = new google.maps.DirectionsService;
       this.directionsDisplay.setMap(map);
       this.directionsDisplay.setPanel(document.getElementById('directionsPanel'));
       if (this.travelMode === 'FLOKIK') {
         this.travelMode = 'WALKING';
         this.destination = FLOKIK_START;
-        this.directionsDisplay.setOptions({
+        this.routeOptions = {
           suppressMarkers: true,
           polylineOptions: {
             strokeOpacity: 0,
@@ -48,40 +50,23 @@ export class DirectionsDirective implements OnChanges {
               repeat: '11px'
             }]
           }
-        });
+        };
       }
-
-      if (this.waypoint) {
-        directionsService.route({
-          origin: this.origin,
-          destination: this.destination,
-          waypoints: [{'location': this.waypoint}],
-          optimizeWaypoints: true,
-          travelMode: this.travelMode
-        }, (response, status) => {
-          if (status === 'OK') {
-            this.response = response;
-            this.directionsDisplay.setDirections(this.response);
-          } else {
-            console.error('Directions request failed due to ' + status);
-          }
-        });
-      } else {
-        directionsService.route({
-          origin: this.origin,
-          destination: this.destination,
-          waypoints: [],
-          optimizeWaypoints: true,
-          travelMode: this.travelMode
-        }, (response, status) => {
-          if (status === 'OK') {
-            this.response = response;
-            this.directionsDisplay.setDirections(this.response);
-          } else {
-            console.error('Directions request failed due to ' + status);
-          }
-        });
-      }
+      this.directionsDisplay.setOptions(this.routeOptions);
+      this.directionsService.route({
+        origin: this.origin,
+        destination: this.destination,
+        waypoints: this.waypoint,
+        optimizeWaypoints: true,
+        travelMode: this.travelMode
+      }, (response, status) => {
+        if (status === 'OK') {
+          this.response = response;
+          this.directionsDisplay.setDirections(this.response);
+        } else {
+          console.error('Directions request failed due to ' + status);
+        }
+      });
     });
   }
 }

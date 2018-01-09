@@ -10,7 +10,7 @@ export class DistanceMatrixApiService {
 
   constructor(private httpClient: HttpClient) {}
 
-  getTimeAndDistance(origin: LatLngLiteral, destination: LatLngLiteral, travelMode: String): Observable<DistanceMatrixResponse> {
+  public getTimeAndDistance(origin: LatLngLiteral, destination: LatLngLiteral, travelMode: String): Observable<DistanceMatrixResponse> {
 
     const url = 'https://maps.googleapis.com/maps/api/distancematrix/json'
       + '?origins=' + origin.lat + ',' + origin.lng
