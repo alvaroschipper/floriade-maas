@@ -41,7 +41,7 @@ export class MapComponent implements OnInit, AfterViewInit {
     this.placeOptions = PLACE_OPTIONS;
     this.enableExplore = true;
     this.flokik = [FLOKIK_START, FLOKIK_WEERWATER, FLOKIK_STOP];
-}
+  }
 
   ngOnInit() {
     this.setupDirectionsDirective();

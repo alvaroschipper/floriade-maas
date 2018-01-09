@@ -2,19 +2,10 @@ agm-map {
   height: 102%;
 }
 
-@media only screen and (max-width : 480px) {
-  #directionsPanelModal {
-    width: 95vw;
-  }
-}
 .directions {
   margin-bottom: 15px;
 }
-/*
-.location {
-  margin-bottom: 500px;
-}
-*/
+
 .explore {
   margin-bottom: 85px;
 }
@@ -22,4 +13,10 @@ agm-map {
 .material-icons {
   color: black;
   opacity: 0.87;
+}
+
+@media only screen and (max-width : 480px) {
+  #directionsPanelModal {
+    width: 95vw;
+  }
 }
